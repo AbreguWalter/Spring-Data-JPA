@@ -40,11 +40,16 @@
 					linea = linea.replace(/{NOMBRE}/g,ui.item.label);
 					linea = linea.replace(/{PRECIO}/g,ui.item.precio);
 					
-					$("#cargarItemProducto tbody").append(linea);
+					$("#cargarItemProductos tbody").append(linea);
 					itemsHelper.calcularImporte(ui.item.value,ui.item.precio,1);
 					
 					return false;
 				}
+			});
+			
+			$("form").submit(function(){
+				$("#plantillaItemsFactura").remove();
+				return;
 			});
 			
 		});
@@ -68,7 +73,7 @@
 					return resultado;
 				},
 				incrementaCantidad : function(id , precio){
-					var cantidad = $("#cantidad_" + id).val() ? parseInt($("cantidad_" + id).val()) : 0;
+					var cantidad = $("#cantidad_" + id).val() ? parseInt($("#cantidad_" + id).val()) : 0;
 					$("#cantidad_" + id).val(++cantidad);
 					this.calcularImporte(id,precio,cantidad);
 				},

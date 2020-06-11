@@ -25,7 +25,8 @@
 							<div class="form-group row">
 								<label for="descripcion" class="col-sm-2 col-form-label" th:text="'Descripcion'"></label>
 								<div class="col-sm-6">
-									<input type="text" th:field="*{descripcion}" class="form-control" />
+									<input type="text" th:field="*{descripcion}" class="form-control" th:errorclass="'form-control is-invalid'"/>
+									<div class="invalid-feeback" th:if="${#fields.hasErrors('descripcion')}" th:errors="*{descripcion}"></div>
 								</div>							
 							</div>
 							<div class="form-group row">
@@ -45,7 +46,7 @@
 							
 							<table th:replace="factura/plantilla-items :: itemsFactura"></table>
 							
-							<table id="cargarItemProducto" class="table table-sm table-striped table-hover">
+							<table id="cargarItemProductos" class="table table-sm table-striped table-hover">
 								<thead>
 									<tr>
 										<th>Nombre</th>
